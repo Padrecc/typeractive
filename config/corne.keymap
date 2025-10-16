@@ -9,55 +9,122 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+        behaviors {
+         hml_s: hml_s {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML_S";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <120>;
+         
+        };
+         hmr_s: hmr_s {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR_S";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <120>;
+        }; 
+         hm_a: hm_a {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_A";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <200>;
+        };
+
+        hm_c: hm_c {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_C";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-while-undecided;
+        };    
+
+        lang_caps: lang_caps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LANG_CAPS";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE)>, <&kp CAPSLOCK>;
+
+            tapping-term-ms = <50>;
+        };
+
+        langsw: langsw {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LANGSW";
+            bindings = <&kp>, <&lang_caps>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+                     
+        };
+        
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         display-name = "Base";
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+   &kp TAB   &kp Q             &kp W             &kp E          &kp R                &kp T           &kp Y      &kp U                 &kp I          &kp O              &kp P                 &kp BSPC
+   &mo 2     &hm_a LEFT_WIN A  &hm_a LEFT_ALT S  &hm_c LCTRL D  &hml_s LEFT_SHIFT F  &kp G           &kp H      &hmr_s RIGHT_SHIFT J  &hm_c RCTRL K  &hm_a RIGHT_ALT L  &hm_a RWIN SEMICOLON  &kp SQT
+   &kp LCTRL &kp Z             &kp X             &kp C          &kp V                &kp B           &kp N      &kp M                 &kp COMMA      &kp DOT            &kp FSLH              &langsw RCTRL 0
+                                                 &lt 3 ESCAPE   &lt 1 SPACE          &kp ENTER       &kp SPACE  &lt 1 SPACE           &lt 3 ESCAPE
                         >;
                 };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Lower";
+                num_layer {
+
+                        display-name = "Num";
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+&kp GRAVE  &kp N1    &kp N2        &kp N3     &kp N4     &kp N5                  &kp N6           &kp N7           &kp N8     &kp N9         &kp N0    &kp BSPC
+&trans     &kp LWIN  &kp LEFT_ALT  &kp LCTRL  &kp LSHFT  &none                   &none            &kp RSHFT        &kp RCTRL  &kp RIGHT_ALT  &kp RWIN  &trans
+&trans     &trans    &trans        &trans     &trans     &out OUT_TOG            &trans           &trans           &trans     &trans         &trans    &trans
+                                   &trans     &trans     &trans                  &trans           &trans           &trans
+
+ 
+ 
                         >;
                 };
 
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Raise";
+                nav_layer {
+                        display-name = "Nav";
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+&trans     &none         &none     &none      &none      &none           &kp PG_UP      &kp BACKSPACE  &kp UP      &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp NON_US_BACKSLASH
+&trans     &kp LEFT_WIN  &kp LALT  &kp LCTRL  &kp LSHFT  &none           &kp PAGE_DOWN  &kp LEFT       &kp DOWN    &kp RIGHT         &kp MINUS          &kp EQUAL
+&soft_off  &none         &none     &none      &none      &none           &kp HOME       &kp END        &kp INSERT  &kp DELETE        &kp QMARK          &soft_off
+                                   &trans     &trans     &trans          &trans         &trans         &trans
                         >;
                 };
 
-                extra_1 {
-                        status = "reserved";
+                Functional {
+            display-name = "Fn";
+            bindings = <
+&kp TAB  &kp F1        &kp F2        &kp F3        &kp F4      &kp F5             &kp F6      &kp F7      &kp F8     &kp F9         &kp F10   &kp F11
+&trans   &kp LWIN      &kp LEFT_ALT  &kp LCTRL     &kp LSHFT   &none              &none       &kp RSHFT   &kp RCTRL  &kp RIGHT_ALT  &kp RWIN  &kp F12
+&trans   &bt BT_SEL 0  &bt BT_SEL 1  &bt_clear     &none       &none              &none       &none       &none      &none          &none     &trans
+                                     &kp LEFT_ALT  &trans      &trans             &trans      &trans      &trans
+            >;
                 };
 
                 extra_2 {

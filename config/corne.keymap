@@ -63,6 +63,15 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        QM {
+            bindings = <&none>;
+            key-positions = <16 34>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 

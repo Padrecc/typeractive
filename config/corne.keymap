@@ -70,7 +70,7 @@
         QM {
             bindings = <&none>;
             key-positions = <16 34>;
-            timeout-ms = <150>;
+            timeout-ms = <(-1)>;
             require-prior-idle-ms = <(-1)>;
             layers = <0>;
         };

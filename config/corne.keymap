@@ -90,6 +90,13 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41>;
         };
+
+        bt_clr_3_tap: bt_clr_3_tap {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BT_CLR_3_TAP";
+            #binding-cells = <0>;
+            bindings = <&none>, <&none>, <&bt BT_CLR>;
+        };
     };
 
     combos {
@@ -140,10 +147,10 @@
         Functional {
             display-name = "Fn";
             bindings = <
-&kp TAB  &kp F1        &kp F2        &kp F3        &kp F4     &kp F5          &kp F6        &kp F7     &kp F8     &kp F9         &kp F10   &kp F11
-&trans   &kp LWIN      &kp LEFT_ALT  &kp LCTRL     &kp LSHFT  &out OUT_TOG    &kp C_VOL_UP  &kp RSHFT  &kp RCTRL  &kp RIGHT_ALT  &kp RWIN  &kp F12
-&trans   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR    &none      &none           &kp C_VOL_DN  &none      &none      &none          &none     &kp CAPS
-                                     &kp LEFT_ALT  &trans     &trans          &trans        &trans     &trans
+&kp TAB  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5           &kp F6        &kp F7      &kp F8     &kp F9         &kp F10   &kp F11
+&trans   &kp LWIN      &kp LEFT_ALT  &kp LCTRL     &kp LSHFT     &out OUT_TOG     &kp C_VOL_UP  &kp RSHFT   &kp RCTRL  &kp RIGHT_ALT  &kp RWIN  &kp F12
+&trans   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt_clr_3_tap    &kp C_VOL_DN  &kp K_MUTE  &none      &none          &none     &kp CAPS
+                                     &kp LEFT_ALT  &trans        &trans           &trans        &trans      &trans
             >;
         };
 

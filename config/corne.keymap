@@ -111,18 +111,6 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        QM {
-            bindings = <&kp QUESTION>;
-            key-positions = <16 34>;
-            timeout-ms = <150>;
-            require-prior-idle-ms = <(-1)>;
-            layers = <0>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 

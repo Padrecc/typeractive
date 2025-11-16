@@ -6,18 +6,18 @@ manifest:
       url-base: https://github.com/urob
     - name: gpeye                         
       url-base: https://github.com/GPeye
-#    - name: padrecc
-#      url-base: https://github.com/Padrecc
+    - name: padrecc
+      url-base: https://github.com/Padrecc
   projects:
     - name: zmk
       remote: urob
       revision: main
       import: app/west.yml
-    - name: hammerbeam-slideshow          
-      remote: gpeye                       
-      revision: main
-#     - name: hammerbeam-slideshow          
-#      remote: padrecc                       
-#      revision: main                          
+#    - name: hammerbeam-slideshow          
+#      remote: gpeye                       
+#      revision: main
+     - name: hammerbeam-slideshow          
+      remote: padrecc                       
+      revision: test                          
   self:
     path: config

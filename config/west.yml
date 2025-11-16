@@ -16,7 +16,7 @@ manifest:
 #    - name: hammerbeam-slideshow          
 #      remote: gpeye                       
 #      revision: main
-     - name: hammerbeam-slideshow          
+    - name: hammerbeam-slideshow          
       remote: padrecc                       
       revision: test                          
   self:

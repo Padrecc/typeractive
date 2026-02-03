@@ -27,8 +27,10 @@ include:
 
   - board: nice_nano_v2
     shield: corne_left nice_view_adapter nice_view_custom
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_USB=y -DCONFIG_ZMK_LOG_USB_CDC=y -DCONFIG_LOG=y -DCONFIG_LOG_DEFAULT_LEVEL=3
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: typeractive_slave_left
+
+#-DCONFIG_ZMK_USB=y -DCONFIG_ZMK_LOG_USB_CDC=y -DCONFIG_LOG=y -DCONFIG_LOG_DEFAULT_LEVEL=3
 
   - board: nice_nano_v2
     shield: corne_left nice_view_adapter nice_view
@@ -38,7 +40,7 @@ include:
 
   - board: nice_nano_v2
     shield: corne_right nice_view_adapter nice_view_custom
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_USB=y -DCONFIG_ZMK_LOG_USB_CDC=y -DCONFIG_LOG=y -DCONFIG_LOG_DEFAULT_LEVEL=3
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n 
     artifact-name: typeractive_slave_right
         
   - board: nice_nano_v2
